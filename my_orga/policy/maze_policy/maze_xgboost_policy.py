@@ -4,6 +4,16 @@ from __future__ import annotations
 
 import os
 from typing import Any, Dict
+import flatland
+
+from flatland.core.grid.grid4 import Grid4Transitions
+
+_original_get_transitions = Grid4Transitions.get_transitions
+
+def _patched_get_transitions(self, cell_transition, orientation):
+    return _original_get_transitions(self, cell_transition, int(orientation))
+
+Grid4Transitions.get_transitions = _patched_get_transitions
 
 from maze_flatland.agents.xgboost_policy import XGBoostPolicy as MazeFlatlandXGBoostPolicy
 
