@@ -6,7 +6,7 @@ FROM ghcr.io/flatland-association/flatland-baselines:${TAG}
 COPY my_orga/ my_orga/
 
 RUN conda env list
-RUN /bin/bash -c "source activate /opt/conda/envs/flatland-baselines && pip install git+https://github.com/enlite-ai/maze.git@dev && pip install git+https://github.com/enlite-ai/maze-flatland.git@main && pip install xgboost && pip install scikit-learn && pip list"
+RUN /bin/bash -c "source activate /opt/conda/envs/flatland-baselines && pip install git+https://github.com/enlite-ai/maze.git@88dcd86134f8baae2f6da09034e45c3b435ef1ba && pip install git+https://github.com/enlite-ai/maze-flatland.git@main && pip install xgboost && pip install scikit-learn && pip list"
 
 #RUN pip install maze-rl
 #RUN pip install git+https://github.com/enlite-ai/maze-flatland.git@main
