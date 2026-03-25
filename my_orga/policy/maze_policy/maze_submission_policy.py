@@ -8,6 +8,16 @@ from typing import Any, Dict, List, Optional
 
 import flatland
 print(f'Flatland version: {flatland.__version__}')
+
+from flatland.core.grid.grid4 import Grid4Transitions
+
+_original_get_transitions = Grid4Transitions.get_transitions
+
+def _patched_get_transitions(self, cell_transition, orientation):
+    return _original_get_transitions(self, cell_transition, int(orientation))
+
+Grid4Transitions.get_transitions = _patched_get_transitions
+
 from flatland.envs.RailEnvPolicy import RailEnvPolicy
 from flatland.envs.rail_env import RailEnv
 from flatland.envs.rail_env_action import RailEnvActions
